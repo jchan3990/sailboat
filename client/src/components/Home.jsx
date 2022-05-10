@@ -1,6 +1,5 @@
-import { React, useEffect, useState, useReducer } from 'react';
+import { React, useEffect, useReducer } from 'react';
 import { Link } from 'react-router-dom';
-import logger from 'use-reducer-logger';
 
 const reducer = (state, action) => {
   switch(action.type) {
@@ -17,7 +16,7 @@ const reducer = (state, action) => {
 
 const Home = () => {
   // const [products, setProducts] = useState([])
-  const [{loading, error, products}, dispatch] = useReducer(logger(reducer), {
+  const [{loading, error, products}, dispatch] = useReducer(reducer, {
     loading: true,
     error: '',
     products: [],
