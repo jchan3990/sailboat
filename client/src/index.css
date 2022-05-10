@@ -30,6 +30,7 @@ main {
 
 .product {
   border: 1px solid #404040;
+  margin: 1rem;
 }
 
 .product img {
