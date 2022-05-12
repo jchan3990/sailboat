@@ -1,5 +1,6 @@
 import { React, useEffect, useReducer } from 'react';
 import { Row, Col } from 'react-bootstrap';
+import { Helmet } from 'react-helmet-async';
 
 import Product from './Product.jsx';
 
@@ -17,7 +18,7 @@ const reducer = (state, action) => {
 }
 
 const Home = () => {
-  const [{loading, error, products}, dispatch] = useReducer(reducer, {
+  const [{ loading, error, products }, dispatch] = useReducer(reducer, {
     loading: true,
     error: '',
     products: [],
@@ -40,6 +41,9 @@ const Home = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Sailboat</title>
+      </Helmet>
       <h1>Featured Products</h1>
           <div className="products">
             {loading 
@@ -50,7 +54,7 @@ const Home = () => {
                 ? (<div>{error}</div>)
                 :
                 (<Row>
-                  {products.map(product=> (
+                  {products.map(product => (
                     <Col sm={6} md={4} lg={3} className="mb-3" key={product.slug}>
                       <Product product={product} />
                     </Col>
