@@ -3,6 +3,8 @@ import { Row, Col } from 'react-bootstrap';
 import { Helmet } from 'react-helmet-async';
 
 import Product from './Product.jsx';
+import LoadingBox from './LoadingBox.jsx';
+import MessageBox from './MessageBox.jsx';
 
 const reducer = (state, action) => {
   switch(action.type) {
@@ -27,12 +29,13 @@ const Home = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       dispatch({ type: 'FETCH_REQUEST' })
-      try {
-        const response = await fetch('/api/products');
-        const data = await response.json();
-        dispatch({ type: 'FETCH_SUCCESS', payload: data });
-      } catch (err) {
-        dispatch({ type: 'FETCH_FAIL', payload: err.message })
+      const response = await fetch(`/api/products`);
+      const data = await response.json();
+      
+      if (response.status >= 400 && response.status < 600) {
+        dispatch({ type: 'FETCH_FAIL', payload: data })
+      } else {
+        dispatch({ type: 'FETCH_SUCCESS', payload: data })
       }
     }
 
@@ -48,19 +51,18 @@ const Home = () => {
           <div className="products">
             {loading 
               ? 
-              (<div>Loading...</div>)
+              <LoadingBox />
               :
-              error 
-                ? (<div>{error}</div>)
+              error ? <MessageBox variant="danger">{error}</MessageBox>
                 :
-                (<Row>
+                <Row>
                   {products.map(product => (
                     <Col sm={6} md={4} lg={3} className="mb-3" key={product.slug}>
                       <Product product={product} />
                     </Col>
                   ))}
                 </Row>
-            )}
+            }
           </div>
     </div>
   )
