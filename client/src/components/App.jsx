@@ -1,10 +1,10 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Navbar, Container } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
 import Home from './Home.jsx';
-import Product from './Product.jsx';
+import ProductPage from './ProductPage.jsx';
 
 const App = () => {
   return (
@@ -20,10 +20,10 @@ const App = () => {
           </Navbar>
         </header>
         <main>
-          <Container>
+          <Container className="mt-3">
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/product/:slug" element={<Product />} />
+              <Route path="/product/:slug" element={<ProductPage />} />
             </Routes>
           </Container>
         </main>
