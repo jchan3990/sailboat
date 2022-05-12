@@ -1,4 +1,4 @@
-import { React, useReducer } from 'react';
+import { React } from 'react';
 import { Link } from 'react-router-dom';
 import { Card, Button } from 'react-bootstrap';
 
@@ -9,7 +9,7 @@ const Product = ({ product }) => {
   return (
     <Card>
       <Link to={`/product/${product.slug}`}>
-        <img src={product.image} className="card-img-top" alt={product.name} />
+        <img className="card-img-top" src={product.image} alt={product.name} />
       </Link>
       <Card.Body>
         <Link to={`/product/${product.slug}`}>
