@@ -1,14 +1,25 @@
-import { React, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { React } from 'react';
+import { Link } from 'react-router-dom';
+import { Card, Button } from 'react-bootstrap';
 
-const Product = () => {
-  const params = useParams();
-  const { slug } = params;
+import Rating from './Rating.jsx';
+
+const Product = ({ product }) => {
 
   return (
-    <div>
-      <h1>{slug}</h1>
-    </div>
+    <Card>
+      <Link to={`/product/${product.slug}`}>
+        <img src={product.image} className="card-img-top" alt={product.name} />
+      </Link>
+      <Card.Body>
+        <Link to={`/product/${product.slug}`}>
+          <Card.Title>{product.name}</Card.Title>
+        </Link>
+        <Rating rating={product.rating} numReviews={product.numReviews} />
+        <Card.Text>${product.price}</Card.Text>
+        <Button>Add to Cart</Button>
+      </Card.Body>
+    </Card>
   )
 }
 
