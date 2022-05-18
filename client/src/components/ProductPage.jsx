@@ -48,10 +48,21 @@ const ProductPage = () => {
   }, [slug])
 
   const { state, dispatch: ctxDispatch } = useContext(Store);
-  const addToCart = () => {
+  const { cart } = state;
+
+  const addToCart = async () => {
+    const itemExists = cart.cartItems.find(x => x._id === product._id);
+    const quantity = itemExists ? itemExists.quantity + 1 : 1;
+    const data = await (await fetch(`/api/products/${product._id}`)).json();
+
+    if (data.countInStock < quantity) {
+      window.alert('Sorry, product is out of stock');
+      return;
+    }
+
     ctxDispatch({
       type: 'CART_ADD_ITEM',
-      payload: {...product, quantity: 1}
+      payload: {...product, quantity: quantity}
     });
   }
 
