@@ -1,7 +1,8 @@
-import { React, useEffect, useReducer } from 'react';
+import { React, useEffect, useReducer, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { Row, Col, ListGroup, Card, Badge, Button } from 'react-bootstrap';
 import { Helmet } from 'react-helmet-async';
+import { Store } from '../store.js';
 
 import Rating from './Rating.jsx';
 import LoadingBox from './LoadingBox.jsx';
@@ -45,6 +46,14 @@ const ProductPage = () => {
 
     fetchProducts();
   }, [slug])
+
+  const { state, dispatch: ctxDispatch } = useContext(Store);
+  const addToCart = () => {
+    ctxDispatch({
+      type: 'CART_ADD_ITEM',
+      payload: {...product, quantity: 1}
+    });
+  }
 
   return loading ? (
     <LoadingBox />
@@ -101,7 +110,7 @@ const ProductPage = () => {
                   {product.countInStock > 0 && (
                     <ListGroup.Item>
                       <div className="d-grid">
-                        <Button variant="primary">
+                        <Button onClick={addToCart} variant="primary">
                           Add to Cart
                         </Button>
                       </div>
