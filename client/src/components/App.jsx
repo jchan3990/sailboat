@@ -1,12 +1,17 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Navbar, Container } from 'react-bootstrap';
+import { React, useContext } from 'react';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { Navbar, Container, Nav, Badge } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import { Store } from '../store.js';
 
 import Home from './Home.jsx';
 import ProductPage from './ProductPage.jsx';
 
+
 const App = () => {
+  const { state } = useContext(Store);
+  const { cart } = state;
+
   return (
     <BrowserRouter>
       <div className="d-flex flex-column site-container">
@@ -16,6 +21,16 @@ const App = () => {
               <LinkContainer to="/">
                 <Navbar.Brand>sailboat</Navbar.Brand>
               </LinkContainer>
+              <Nav className="me-auto">
+                <Link to="/cart" className="nav-link">
+                  Cart
+                  {cart.cartItems.length > 0 && (
+                    <Badge pill bg="danger">
+                      {cart.cartItems.length}
+                    </Badge>
+                  )}
+                </Link>
+              </Nav>
             </Container>
           </Navbar>
         </header>
