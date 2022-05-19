@@ -1,5 +1,5 @@
 import { React, useEffect, useReducer, useContext } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Row, Col, ListGroup, Card, Badge, Button } from 'react-bootstrap';
 import { Helmet } from 'react-helmet-async';
 import { Store } from '../store.js';
@@ -22,6 +22,7 @@ const reducer = (state, action) => {
 }
 
 const ProductPage = () => {
+  const navigate = useNavigate();
   const params = useParams();
   const { slug } = params;
 
@@ -64,6 +65,7 @@ const ProductPage = () => {
       type: 'CART_ADD_ITEM',
       payload: {...product, quantity: quantity}
     });
+    navigate('/cart')
   }
 
   return loading ? (
