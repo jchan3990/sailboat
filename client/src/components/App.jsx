@@ -7,6 +7,7 @@ import { Store } from '../store.js';
 import Home from './Home.jsx';
 import ProductPage from './ProductPage.jsx';
 import CartPage from './CartPage.jsx';
+import SignInPage from './SignInPage.jsx';
 
 
 const App = () => {
@@ -41,6 +42,7 @@ const App = () => {
               <Route path="/" element={<Home />} />
               <Route path="/product/:slug" element={<ProductPage />} />
               <Route path="/cart" element={<CartPage />} />
+              <Route path="/signin" element={<SignInPage />} />
             </Routes>
           </Container>
         </main>
