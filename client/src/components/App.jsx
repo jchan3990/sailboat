@@ -4,12 +4,12 @@ import { Navbar, Container, Nav, Badge, NavDropdown } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Store } from '../store.js';
 
-import Home from './Home.jsx';
-import ProductPage from './ProductPage.jsx';
-import CartPage from './CartPage.jsx';
-import SignInPage from './SignInPage.jsx';
-import ShippingPage from './ShippingPage.jsx';
-import SignUpPage from './SignUpPage.jsx';
+import Home from '../pages/Home.jsx';
+import ProductPage from '../pages/ProductPage.jsx';
+import CartPage from '../pages/CartPage.jsx';
+import SignInPage from '../pages/SignInPage.jsx';
+import ShippingPage from '../pages/ShippingPage.jsx';
+import SignUpPage from '../pages/SignUpPage.jsx';
 
 
 const App = () => {
