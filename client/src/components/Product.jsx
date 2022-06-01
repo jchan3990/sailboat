@@ -1,7 +1,7 @@
 import { React, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Card, Button } from 'react-bootstrap';
-import { Store } from '../store.js';
+import { Store } from '../Store.js';
 
 import Rating from './Rating.jsx';
 

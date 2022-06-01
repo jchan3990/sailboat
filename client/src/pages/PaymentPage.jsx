@@ -2,7 +2,7 @@ import { React, useContext, useEffect, useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom';
-import { Store } from '../store.js';
+import { Store } from '../Store.js';
 
 import CheckoutSteps from '../components/CheckoutSteps';
 

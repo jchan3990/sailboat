@@ -2,7 +2,7 @@ import { React, useContext } from 'react';
 import { Row, Col, ListGroup, Button, Card } from 'react-bootstrap';
 import { Helmet } from 'react-helmet-async'
 import { Link, useNavigate } from 'react-router-dom';
-import { Store } from '../store.js';
+import { Store } from '../Store.js';
 
 import MessageBox from '../components/MessageBox.jsx';
 

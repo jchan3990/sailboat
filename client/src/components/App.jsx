@@ -2,7 +2,7 @@ import { React, useContext } from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import { Navbar, Container, Nav, Badge, NavDropdown } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
-import { Store } from '../store.js';
+import { Store } from '../Store.js';
 
 import Home from '../pages/Home.jsx';
 import ProductPage from '../pages/ProductPage.jsx';
