@@ -9,6 +9,7 @@ import ProductPage from './ProductPage.jsx';
 import CartPage from './CartPage.jsx';
 import SignInPage from './SignInPage.jsx';
 import ShippingPage from './ShippingPage.jsx';
+import SignUpPage from './SignUpPage.jsx';
 
 
 const App = () => {
@@ -73,6 +74,7 @@ const App = () => {
               <Route path="/product/:slug" element={<ProductPage />} />
               <Route path="/cart" element={<CartPage />} />
               <Route path="/signin" element={<SignInPage />} />
+              <Route path="/signup" element={<SignUpPage />} />
               <Route path="/shipping" element={<ShippingPage />} />
             </Routes>
           </Container>
