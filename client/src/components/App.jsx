@@ -10,6 +10,7 @@ import CartPage from '../pages/CartPage.jsx';
 import SignInPage from '../pages/SignInPage.jsx';
 import ShippingPage from '../pages/ShippingPage.jsx';
 import SignUpPage from '../pages/SignUpPage.jsx';
+import PaymentPage from '../pages/PaymentPage.jsx';
 
 
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
     ctxDispatch({ type: 'USER_SIGNOUT'});
     localStorage.removeItem('userInfo');
     localStorage.removeItem('shippingAddress');
+    localStorage.removeItem('paymentMethod');
   }
 
   return (
@@ -76,6 +78,7 @@ const App = () => {
               <Route path="/signin" element={<SignInPage />} />
               <Route path="/signup" element={<SignUpPage />} />
               <Route path="/shipping" element={<ShippingPage />} />
+              <Route path="/payment" element={<PaymentPage />} />
             </Routes>
           </Container>
         </main>
