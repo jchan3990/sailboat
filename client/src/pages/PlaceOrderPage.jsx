@@ -65,7 +65,7 @@ const PlaceOrderPage = () => {
       alert('Oh no! Something went wrong.');
     } else {
       ctxDispatch({ type: 'CART_CLEAR'} );
-      dispatch({ type: 'CREATE_SUCESS'} );
+      dispatch({ type: 'CREATE_SUCCESS'} );
       localStorage.removeItem('cartItems');
       navigate(`/order/${data.order._id}`)
     }
