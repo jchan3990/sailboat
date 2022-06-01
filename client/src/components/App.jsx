@@ -8,6 +8,7 @@ import Home from './Home.jsx';
 import ProductPage from './ProductPage.jsx';
 import CartPage from './CartPage.jsx';
 import SignInPage from './SignInPage.jsx';
+import ShippingPage from './ShippingPage.jsx';
 
 
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
   const handleSignOut = () => {
     ctxDispatch({ type: 'USER_SIGNOUT'});
     localStorage.removeItem('userInfo');
+    localStorage.removeItem('shippingAddress');
   }
 
   return (
@@ -71,6 +73,7 @@ const App = () => {
               <Route path="/product/:slug" element={<ProductPage />} />
               <Route path="/cart" element={<CartPage />} />
               <Route path="/signin" element={<SignInPage />} />
+              <Route path="/shipping" element={<ShippingPage />} />
             </Routes>
           </Container>
         </main>
