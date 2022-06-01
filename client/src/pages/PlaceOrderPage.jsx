@@ -26,9 +26,8 @@ const reducer = (state, action) => {
 const PlaceOrderPage = () => {
   const navigate = useNavigate();
 
-  const [{ loading, error }, dispatch] = useReducer(reducer, {
-    loading: false,
-    error: ''
+  const [{ loading }, dispatch] = useReducer(reducer, {
+    loading: false
   })
 
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -59,12 +58,12 @@ const PlaceOrderPage = () => {
       },
       body: JSON.stringify(body)
     })
+    const data = await response.json();
 
     if (response.status >= 400 && response.status < 600) {
       dispatch({ type: 'CREATE_FAIL' })
       alert('Oh no! Something went wrong.');
     } else {
-      const data = await response.json();
       ctxDispatch({ type: 'CART_CLEAR'} );
       dispatch({ type: 'CREATE_SUCESS'} );
       localStorage.removeItem('cartItems');
