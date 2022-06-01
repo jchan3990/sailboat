@@ -11,6 +11,7 @@ import SignInPage from '../pages/SignInPage.jsx';
 import ShippingPage from '../pages/ShippingPage.jsx';
 import SignUpPage from '../pages/SignUpPage.jsx';
 import PaymentPage from '../pages/PaymentPage.jsx';
+import PlaceOrderPage from '../pages/PlaceOrderPage.jsx';
 
 
 const App = () => {
@@ -79,6 +80,7 @@ const App = () => {
               <Route path="/signup" element={<SignUpPage />} />
               <Route path="/shipping" element={<ShippingPage />} />
               <Route path="/payment" element={<PaymentPage />} />
+              <Route path="/placeorder" element={<PlaceOrderPage />} />
             </Routes>
           </Container>
         </main>
