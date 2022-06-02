@@ -14,6 +14,7 @@ import PaymentPage from '../pages/PaymentPage.jsx';
 import PlaceOrderPage from '../pages/PlaceOrderPage.jsx';
 import OrderPage from '../pages/OrderPage.jsx';
 import OrderHistoryPage from '../pages/OrderHistoryPage.jsx';
+import ProfilePage from '../pages/ProfilePage.jsx';
 
 
 const App = () => {
@@ -25,6 +26,7 @@ const App = () => {
     localStorage.removeItem('userInfo');
     localStorage.removeItem('shippingAddress');
     localStorage.removeItem('paymentMethod');
+    window.location.href = '/signin'
   }
 
   return (
@@ -88,6 +90,7 @@ const App = () => {
               <Route path="/placeorder" element={<PlaceOrderPage />} />
               <Route path="/order/:id" element={<OrderPage/>} />
               <Route path="/orderhistory" element={<OrderHistoryPage />} />
+              <Route path="/profile" element={<ProfilePage />} />
             </Routes>
           </Container>
         </main>
