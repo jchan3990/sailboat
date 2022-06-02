@@ -31,7 +31,6 @@ const Home = () => {
       dispatch({ type: 'FETCH_REQUEST' })
       const response = await fetch(`/api/products`);
       const data = await response.json();
-      console.log(data)
       
       if (response.status >= 400 && response.status < 600) {
         dispatch({ type: 'FETCH_FAIL', payload: data })
