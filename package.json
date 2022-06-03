@@ -1,5 +1,25 @@
 {
   "dependencies": {
+    "path": "^0.12.7",
     "react-router-dom": "^6.3.0"
-  }
+  },
+  "name": "sailboat",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "cd server && npm install && cd ../client && npm install && npm run build",
+    "start": "node server/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jchan3990/sailboat.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jchan3990/sailboat/issues"
+  },
+  "homepage": "https://github.com/jchan3990/sailboat#readme"
 }
