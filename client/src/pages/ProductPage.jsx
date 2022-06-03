@@ -2,7 +2,7 @@ import { React, useEffect, useReducer, useContext } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Row, Col, ListGroup, Card, Badge, Button } from 'react-bootstrap';
 import { Helmet } from 'react-helmet-async';
-import { Store } from '../Store.js';
+import { Store } from '../store.js';
 
 import Rating from '../components/Rating.jsx';
 import LoadingBox from '../components/LoadingBox.jsx';

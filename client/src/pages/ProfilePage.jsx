@@ -1,7 +1,7 @@
 import { React, useContext, useState, useReducer } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { Helmet } from 'react-helmet-async';
-import { Store } from '../Store.js';
+import { Store } from '../store.js';
 
 const reducer = (state, action) => {
   switch (action.type) {

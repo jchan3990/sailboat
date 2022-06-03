@@ -1,6 +1,6 @@
 import { React, useReducer, useEffect, useContext } from 'react';
 import { useNavigate, useParams, Link } from 'react-router-dom';
-import { Store } from '../Store.js';
+import { Store } from '../store.js';
 import { Helmet } from 'react-helmet-async';
 import { Card, Col, ListGroup, Row } from 'react-bootstrap';
 import { PayPalButtons, usePayPalScriptReducer } from '@paypal/react-paypal-js';

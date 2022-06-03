@@ -2,7 +2,7 @@ import { React, useState, useContext, useEffect } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import { Helmet } from 'react-helmet-async';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Store } from '../Store.js';
+import { Store } from '../store.js';
 
 const SignInPage = () => {
   const navigate = useNavigate();

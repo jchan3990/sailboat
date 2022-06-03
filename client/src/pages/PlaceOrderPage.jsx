@@ -2,7 +2,7 @@ import { React, useContext, useEffect, useReducer } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom';
 import { Card, Row, Col, ListGroup, Button } from 'react-bootstrap';
-import { Store } from '../Store.js';
+import { Store } from '../store.js';
 import { Link } from 'react-router-dom';
 
 import CheckoutSteps from '../components/CheckoutSteps.jsx';
