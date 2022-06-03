@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
-import { StoreProvider } from './Store.js';
+import { StoreProvider } from './store.js';
 import { PayPalScriptProvider } from '@paypal/react-paypal-js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
