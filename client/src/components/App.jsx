@@ -1,6 +1,6 @@
-import { React, useContext } from 'react';
+import { React, useContext, useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import { Navbar, Container, Nav, Badge, NavDropdown } from 'react-bootstrap';
+import { Navbar, Container, Nav, Badge, NavDropdown, Button } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Store } from '../store.js';
 
@@ -15,6 +15,8 @@ import PlaceOrderPage from '../pages/PlaceOrderPage.jsx';
 import OrderPage from '../pages/OrderPage.jsx';
 import OrderHistoryPage from '../pages/OrderHistoryPage.jsx';
 import ProfilePage from '../pages/ProfilePage.jsx';
+import SearchBar from './SearchBar.jsx';
+
 
 
 const App = () => {
@@ -29,17 +31,46 @@ const App = () => {
     window.location.href = '/signin'
   }
 
+  const [sidebarIsOpen, setSidebarIsOpen] = useState(0);
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      const response = await fetch(`/api/products/categories`);
+      
+      if (response.status >= 400 && response.status < 600) {
+        // alert('Error fetching categories');
+      } else {
+        const data = await response.json();
+        setCategories(data);
+      }
+    };
+
+    fetchCategories();
+  }, [])
+
   return (
     <BrowserRouter>
-      <div className="d-flex flex-column site-container">
+      <div className={sidebarIsOpen
+        ? "d-flex flex-column site-container active-cont"
+        : "d-flex flex-column site-container"
+      }
+      >
         <header>
           <Navbar bg="dark" variant="dark" expand="lg">
             <Container>
+              <Button
+                variant="dark"
+                onClick={() => setSidebarIsOpen(!sidebarIsOpen)}  
+              >
+                <i className="fas fa-bars"></i>
+              </Button>
               <LinkContainer to="/">
                 <Navbar.Brand>sailboat</Navbar.Brand>
               </LinkContainer>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
+                <SearchBar />
                 <Nav className="me-auto w-100 justify-content-end">
                   <Link to="/cart" className="nav-link">
                     Cart
@@ -77,6 +108,26 @@ const App = () => {
             </Container>
           </Navbar>
         </header>
+        <div className={sidebarIsOpen
+          ? 'active-nav side-navbar d-flex justify-content-between flex-wrap flex-column'
+          : 'side-navbar d-flex justify-content-between flex-wrap flex-column'
+        }>
+          <Nav className="flex-column text-white w-100 p-2">
+            <Nav.Item>
+              <strong>Categories</strong>
+            </Nav.Item>
+            {categories.map(category => (
+              <Nav.Item key={category}>
+                <LinkContainer
+                  to={`/search?category=${category}`}
+                  onClick={() => setSidebarIsOpen(0)}
+                >
+                  <Nav.Link>{category}</Nav.Link>
+                </LinkContainer>
+              </Nav.Item>
+            ))}
+          </Nav>
+        </div>  
         <main>
           <Container className="mt-3">
             <Routes>
