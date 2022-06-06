@@ -16,8 +16,7 @@ import OrderPage from '../pages/OrderPage.jsx';
 import OrderHistoryPage from '../pages/OrderHistoryPage.jsx';
 import ProfilePage from '../pages/ProfilePage.jsx';
 import SearchBar from './SearchBar.jsx';
-
-
+import SearchPage from '../pages/SearchPage.jsx';
 
 const App = () => {
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -142,6 +141,7 @@ const App = () => {
               <Route path="/order/:id" element={<OrderPage/>} />
               <Route path="/orderhistory" element={<OrderHistoryPage />} />
               <Route path="/profile" element={<ProfilePage />} />
+              <Route path="/search" element = {<SearchPage />} />
             </Routes>
           </Container>
         </main>
