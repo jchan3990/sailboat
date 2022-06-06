@@ -13,9 +13,10 @@ const PAGE_SIZE = 3;
 productRouter.get('/search', expressAsyncHandler(async (req, res) => {
   const { query } = req;
 
+  console.log(query)
   const pageSize = query.pageSize || PAGE_SIZE;
   const page = query.page || 1;
-  const category = query.categrory || '';
+  const category = query.category || '';
   const brand = query.brand || '';
   const price = query.price || '';
   const rating = query.rating || '';
@@ -26,7 +27,7 @@ productRouter.get('/search', expressAsyncHandler(async (req, res) => {
     searchQuery && searchQuery !== 'all'
     ? {
         name: {
-          $regex:searchQuery,
+          $regex: searchQuery,
           $options: 'i'
         },
     } : {};
@@ -41,7 +42,7 @@ productRouter.get('/search', expressAsyncHandler(async (req, res) => {
     ? {
         price: {
           $gte: Number(price.split('-')[0]),
-          $lte: Number (price.split('-')[1])
+          $lte: Number(price.split('-')[1])
         },
     } : {};
     const sortOrder = 
