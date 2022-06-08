@@ -17,6 +17,9 @@ import OrderHistoryPage from '../pages/OrderHistoryPage.jsx';
 import ProfilePage from '../pages/ProfilePage.jsx';
 import SearchBar from './SearchBar.jsx';
 import SearchPage from '../pages/SearchPage.jsx';
+import Dashboard from '../pages/DashboardPage.jsx';
+import ProtectedRoute from './ProtectedRoute.jsx';
+import AdminRoute from './AdminRoute.jsx';
 
 const App = () => {
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -102,6 +105,22 @@ const App = () => {
                       </Link>
                     )
                   }
+                  {userInfo && userInfo.isAdmin && (
+                    <NavDropdown title="Admin" id="admin-nav-dropdown">
+                      <LinkContainer to="/admin/dashboard">
+                        <NavDropdown.Item>Dashboard</NavDropdown.Item>
+                      </LinkContainer>
+                      <LinkContainer to="/admin/productlist">
+                        <NavDropdown.Item>Products</NavDropdown.Item>
+                      </LinkContainer>
+                      <LinkContainer to="/admin/orderlist">
+                        <NavDropdown.Item>Orders</NavDropdown.Item>
+                      </LinkContainer>
+                      <LinkContainer to="/admin/userlist">
+                        <NavDropdown.Item>Users</NavDropdown.Item>
+                      </LinkContainer>
+                    </NavDropdown>
+                  )}
                 </Nav>
               </Navbar.Collapse>
             </Container>
@@ -130,6 +149,9 @@ const App = () => {
         <main>
           <Container className="mt-3">
             <Routes>
+              {/* Admin Routes */}
+              <Route path="/admin/dashboard" element={<AdminRoute><Dashboard /></AdminRoute>} />
+              {/* All Routes */}
               <Route path="/" element={<Home />} />
               <Route path="/product/:slug" element={<ProductPage />} />
               <Route path="/cart" element={<CartPage />} />
@@ -138,9 +160,21 @@ const App = () => {
               <Route path="/shipping" element={<ShippingPage />} />
               <Route path="/payment" element={<PaymentPage />} />
               <Route path="/placeorder" element={<PlaceOrderPage />} />
-              <Route path="/order/:id" element={<OrderPage/>} />
-              <Route path="/orderhistory" element={<OrderHistoryPage />} />
-              <Route path="/profile" element={<ProfilePage />} />
+              <Route path="/order/:id" element={
+                <ProtectedRoute>
+                  <OrderPage />
+                </ProtectedRoute>
+              } />
+              <Route path="/orderhistory" element={
+                <ProtectedRoute>
+                  <OrderHistoryPage />
+              </ProtectedRoute>
+              } />
+              <Route path="/profile" element={
+                <ProtectedRoute>
+                  <ProfilePage />
+                </ProtectedRoute>
+              } />
               <Route path="/search" element = {<SearchPage />} />
             </Routes>
           </Container>
