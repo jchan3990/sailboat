@@ -29,3 +29,6 @@ Fullstack MERN e-commerce web application
 $ git clone https://github.com/jchan3990/sailboat.git
 $ cd sailboat
 ```
+
+# Deployed on Heroku
+Can visit app [here](https://shop-sailboat.herokuapp.com/).
